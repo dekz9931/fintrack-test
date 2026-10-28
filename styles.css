@@ -1,0 +1,23 @@
+/* Finance Tracker — base styles (SYS-041: 44-point targets, no sideways scrolling, text not colour). */
+:root { --bg: #f7f7f5; --card: #ffffff; --text: #1d1d1b; --muted: #5d5d58; --accent: #1f6f50; --accent-text: #ffffff; --error: #a3261b; --line: #dcdcd6; }
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #151614; --card: #20211f; --text: #ececea; --muted: #a9a9a3; --accent: #3fae80; --accent-text: #0d1a14; --error: #ff8a7d; --line: #3a3b38; }
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--bg); color: var(--text); font: 17px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; overflow-x: hidden; }
+main { max-width: 560px; margin: 0 auto; padding: max(16px, env(safe-area-inset-top)) 16px max(24px, env(safe-area-inset-bottom)); }
+html[data-copy="Test"] body::before { content: "[TEST] copy — sample data only"; display: block; text-align: center; font-size: 14px; padding: 6px; background: #f2c94c; color: #1d1d1b; }
+h1 { font-size: 24px; margin: 0 0 8px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 20px; margin-top: 24px; }
+.centred { text-align: center; }
+.notice { color: var(--muted); min-height: 1.4em; }
+.notice.error { color: var(--error); font-weight: 600; }
+.notice.error::before { content: "⚠ "; }
+button { font: inherit; min-height: 44px; min-width: 44px; padding: 10px 18px; border-radius: 10px; border: 1px solid var(--line); background: var(--card); color: var(--text); cursor: pointer; }
+button.primary { background: var(--accent); color: var(--accent-text); border-color: var(--accent); font-weight: 600; width: 100%; }
+button:disabled { opacity: .6; }
+dl { display: grid; grid-template-columns: max-content 1fr; gap: 6px 16px; margin: 16px 0; }
+dt { color: var(--muted); }
+dd { margin: 0; overflow-wrap: anywhere; }
+.toast { position: fixed; left: 50%; bottom: max(24px, env(safe-area-inset-bottom)); transform: translateX(-50%); background: var(--text); color: var(--bg); padding: 10px 16px; border-radius: 10px; }
