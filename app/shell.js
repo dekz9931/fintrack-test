@@ -17,8 +17,9 @@ import * as transactions from './screens/transactions.js';
 import * as settingsScreen from './screens/settings.js';
 import * as more from './screens/more.js';
 import * as later from './screens/later.js';
+import * as accounts from './screens/accounts.js';
 
-export const VERSION = '0.5.1';
+export const VERSION = '0.5.2';
 const root = globalThis.document?.getElementById('app');
 const CACHE_PREFIX = 'fintrack.cache.';
 
@@ -29,7 +30,7 @@ export function titleFor(copy, text) {
 
 const SCREENS = {
   home, transactions, add, edit: add, settings: settingsScreen, more,
-  plan: later, funds: later, summary: later, accounts: later, categories: later, installments: later, thirteenth: later,
+  plan: later, funds: later, summary: later, accounts, categories: later, installments: later, thirteenth: later,
 };
 
 // "#/edit/42?x=1" → { name: 'edit', arg: '42', query: URLSearchParams }
