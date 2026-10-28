@@ -121,7 +121,7 @@ export function segmented(options, value, onChange, label) {
     group.replaceChildren(...options.map(([v, text]) => el('button', {
       type: 'button', role: 'radio', 'aria-checked': String(v === current), class: v === current ? 'on' : null,
       onclick: () => { draw(v); onChange(v); },
-    }, text)));
+    }, v === current ? el('span', { 'aria-hidden': 'true' }, '✓ ') : null, text)));   // a mark, not colour alone (REQ-030)
   };
   draw(value);
   return group;

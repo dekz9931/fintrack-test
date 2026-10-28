@@ -18,7 +18,7 @@ import * as settingsScreen from './screens/settings.js';
 import * as more from './screens/more.js';
 import * as later from './screens/later.js';
 
-export const VERSION = '0.5.0';
+export const VERSION = '0.5.1';
 const root = globalThis.document?.getElementById('app');
 const CACHE_PREFIX = 'fintrack.cache.';
 
