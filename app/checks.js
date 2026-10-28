@@ -39,3 +39,21 @@ export function checkTransfer(fromId, toId) {
 export function checkDate(iso, appToday) {
   return String(iso) > String(appToday) ? { ok: false, error: MSG.future } : { ok: true };
 }
+
+// Master-data amounts (N-24: only the app checks decimals here, so every form uses these).
+// Opening balances may be negative (a credit card owes money); "−" or "-" both accepted.
+export function parseSignedAmount(text) {
+  const t = String(text ?? '').replace(/[\s,]/g, '').replace('−', '-');
+  if (/^-?\d{1,12}\.\d{3,}$/.test(t)) return { ok: false, error: MSG.decimals };
+  const m = /^(-)?(\d{1,12})(?:\.(\d{0,2}))?$/.exec(t);
+  if (!m) return { ok: false, error: 'Enter an amount, e.g. 0.00' };
+  const body = `${BigInt(m[2]).toString()}.${(m[3] || '').padEnd(2, '0')}`;
+  return { ok: true, value: m[1] && body !== '0.00' ? `-${body}` : body };
+}
+
+// Amounts that may be ₱0.00 but never negative (expected income, planned amounts).
+export function parseZeroOrMore(text) {
+  const r = parseSignedAmount(text);
+  if (!r.ok) return r.error === MSG.decimals ? r : { ok: false, error: 'Enter an amount of ₱0.00 or more' };
+  return r.value.startsWith('-') ? { ok: false, error: 'Enter an amount of ₱0.00 or more' } : r;
+}
