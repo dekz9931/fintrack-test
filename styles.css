@@ -94,6 +94,26 @@ progress { flex: 1; height: 12px; accent-color: var(--accent); }
 .row-button:focus-visible { outline: 2px solid var(--accent); border-radius: 6px; }
 .archived summary { min-height: 44px; display: flex; align-items: center; cursor: pointer; color: var(--muted); font-weight: 600; margin-top: 12px; }
 
+/* plan, funds, summary */
+.month-bar { display: flex; align-items: center; justify-content: center; gap: 12px; margin: 12px 0; }
+.month-label { min-width: 110px; text-align: center; }
+.payday-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
+.payday-head h2 { font-size: 16px; }
+button.row-link { background: none; border: none; padding: 6px 0; text-align: left; justify-content: flex-start; color: inherit; flex: 1; }
+.row-buttons.centre { justify-content: center; }
+.tiles { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
+.tiles .card { margin-top: 8px; display: grid; gap: 2px; }
+.summary-table { width: 100%; border-collapse: collapse; margin-top: 16px; font-size: 15px; }
+.summary-table th, .summary-table td { text-align: left; padding: 8px 4px; border-bottom: 1px solid var(--line); vertical-align: top; }
+.summary-table td, .summary-table thead th + th { text-align: right; font-variant-numeric: tabular-nums; }
+.list li button.link { text-align: right; }
+.switch { display: flex; align-items: center; gap: 8px; min-height: 44px; }
+.switch input { width: 24px; height: 24px; min-height: 0; }
+.switch[hidden] { display: none; }
+.small-select { width: auto; }
+.centre-col { max-width: 560px; }
+.fund-grid .card.tile h2 { margin-bottom: 4px; }
+
 /* forms */
 .form { display: grid; gap: 4px; margin-top: 12px; }
 .field { display: grid; gap: 4px; margin: 8px 0; }
@@ -143,6 +163,9 @@ dialog::backdrop { background: rgba(0,0,0,.45); }
   .fab, .toast, .undo-bar { bottom: 24px; }
   .undo-bar { left: auto; width: 360px; }
   .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .fund-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 0 16px; }
+  .paydays { display: grid; grid-template-columns: 1fr 1fr; gap: 0 16px; align-items: start; }
+  .tiles { grid-template-columns: repeat(4, 1fr); }
   .columns { display: grid; grid-template-columns: 1fr 1fr; gap: 0 16px; align-items: start; }
   .sheet { margin: auto; border-radius: 14px; }
   .card.setup { max-width: 640px; margin: 24px auto; }
