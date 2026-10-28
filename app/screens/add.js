@@ -201,7 +201,8 @@ export async function render(view, ctx, route) {
   function chip(c) {
     const on = Number(state.category_id) === Number(c.id);
     return el('button', { type: 'button', role: 'radio', 'aria-checked': String(on), class: on ? 'chip on' : 'chip',
-      onclick: () => { state.category_id = c.id; state.notPartOfPlan = false; draw(); } }, c.name);
+      onclick: () => { state.category_id = c.id; state.notPartOfPlan = false; draw(); } },
+      on ? el('span', { 'aria-hidden': 'true' }, '✓ ') : null, c.name);   // a mark, not colour alone (REQ-030)
   }
   function drawChips() {
     const ch = chips(pickers, state.direction);
