@@ -57,3 +57,13 @@ export function percent(value) {
   const n = Number(value);
   return Number.isFinite(n) ? `${n.toFixed(1)}%` : '—';
 }
+
+// Signed centavos as a BigInt, for comparing two amounts on screen (never for sums — those
+// are done in the database, ADR-005). Non-numbers → null.
+export function signedCents(str) {
+  const v = toCents(str);
+  return v ? (v.negative ? -v.cents : v.cents) : null;
+}
+export function isNegative(str) { const c = signedCents(str); return c !== null && c < 0n; }
+export function isZero(str) { const c = signedCents(str); return c === null || c === 0n; }
+export function absText(str) { return String(str).replace(/^\s*-/, ''); }

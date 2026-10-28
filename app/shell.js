@@ -16,10 +16,15 @@ import * as add from './screens/add.js';
 import * as transactions from './screens/transactions.js';
 import * as settingsScreen from './screens/settings.js';
 import * as more from './screens/more.js';
-import * as later from './screens/later.js';
 import * as accounts from './screens/accounts.js';
+import * as plan from './screens/plan.js';
+import * as funds from './screens/funds.js';
+import * as summary from './screens/summary.js';
+import * as thirteenth from './screens/thirteenth.js';
+import * as categories from './screens/categories.js';
+import * as installments from './screens/installments.js';
 
-export const VERSION = '0.5.2';
+export const VERSION = '0.6.0';
 const root = globalThis.document?.getElementById('app');
 const CACHE_PREFIX = 'fintrack.cache.';
 
@@ -30,7 +35,7 @@ export function titleFor(copy, text) {
 
 const SCREENS = {
   home, transactions, add, edit: add, settings: settingsScreen, more,
-  plan: later, funds: later, summary: later, accounts, categories: later, installments: later, thirteenth: later,
+  plan, funds, summary, accounts, categories, installments, thirteenth,
 };
 
 // "#/edit/42?x=1" → { name: 'edit', arg: '42', query: URLSearchParams }
