@@ -1,6 +1,6 @@
 // sw.js — MOD-019 offline start (ARC-001). App files are cached per release; a new release
 // replaces the cache and the old one is deleted (F-27). Supabase calls are never cached.
-const VERSION = '0.5.0';
+const VERSION = '0.5.1';
 const CACHE = `fintrack-v${VERSION}`;
 const FILES = [
   './', './index.html', './styles.css', './config.js', './manifest.webmanifest',
@@ -12,8 +12,13 @@ const FILES = [
   './app/screens/later.js',
 ];
 
+// D-003: each file is fetched fresh from the server ('reload' skips the browser's own HTTP
+// cache, which GitHub Pages lets keep a file for 10 minutes), so a release is never stored
+// with an older file.
 self.addEventListener('install', (event) => {
-  event.waitUntil(caches.open(CACHE).then((c) => c.addAll(FILES)).then(() => self.skipWaiting()));
+  event.waitUntil(caches.open(CACHE)
+    .then((c) => c.addAll(FILES.map((f) => new Request(f, { cache: 'reload' }))))
+    .then(() => self.skipWaiting()));
 });
 
 self.addEventListener('activate', (event) => {
