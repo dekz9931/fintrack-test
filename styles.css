@@ -88,6 +88,12 @@ progress { flex: 1; height: 12px; accent-color: var(--accent); }
 .tx-main .amount { grid-column: 2; grid-row: 1; text-align: right; }
 .more { text-align: center; padding: 12px 0; }
 
+/* accounts */
+.row-button { all: unset; box-sizing: border-box; display: grid; grid-template-columns: 1fr auto; column-gap: 8px; width: 100%; min-height: 44px; cursor: pointer; padding: 4px 0; }
+.row-button .muted { grid-column: 1 / -1; }
+.row-button:focus-visible { outline: 2px solid var(--accent); border-radius: 6px; }
+.archived summary { min-height: 44px; display: flex; align-items: center; cursor: pointer; color: var(--muted); font-weight: 600; margin-top: 12px; }
+
 /* forms */
 .form { display: grid; gap: 4px; margin-top: 12px; }
 .field { display: grid; gap: 4px; margin: 8px 0; }

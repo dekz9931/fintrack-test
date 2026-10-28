@@ -1,6 +1,6 @@
 // sw.js — MOD-019 offline start (ARC-001). App files are cached per release; a new release
 // replaces the cache and the old one is deleted (F-27). Supabase calls are never cached.
-const VERSION = '0.5.1';
+const VERSION = '0.5.2';
 const CACHE = `fintrack-v${VERSION}`;
 const FILES = [
   './', './index.html', './styles.css', './config.js', './manifest.webmanifest',
@@ -9,7 +9,7 @@ const FILES = [
   './app/checks.js', './app/ui.js',
   './app/screens/signin.js', './app/screens/setup.js', './app/screens/forms.js', './app/screens/home.js',
   './app/screens/add.js', './app/screens/transactions.js', './app/screens/settings.js', './app/screens/more.js',
-  './app/screens/later.js',
+  './app/screens/later.js', './app/screens/accounts.js',
 ];
 
 // D-003: each file is fetched fresh from the server ('reload' skips the browser's own HTTP
